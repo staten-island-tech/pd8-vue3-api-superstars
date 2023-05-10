@@ -1,8 +1,14 @@
 <script setup>
+import BarGraph from '../components/BarGraph.vue'
 import { data } from '../api.js'
-console.log(data.map((squirrel) => squirrel.age || 'Unknown'))
+import PieChart from '../components/PieChart.vue'
+console.log(data)
 </script>
 
 <template>
-  <h1>hi</h1>
+  <div>
+    <h1>Squirrel Ages</h1>
+    <BarGraph />
+    <PieChart />
+  </div>
 </template>
