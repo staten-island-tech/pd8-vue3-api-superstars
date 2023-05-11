@@ -1,17 +1,9 @@
 <script setup>
 import { data } from '../api.js'
-import { Bar } from 'vue-chartjs'
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-} from 'chart.js'
+import { Pie } from 'vue-chartjs'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+ChartJS.register(ArcElement, Tooltip, Legend)
 data.map((squirrel) => {
   squirrel.age = squirrel.age || 'Unknown'
   return squirrel
@@ -20,8 +12,7 @@ let dataAges = {
   labels: ['Adult', 'Juvenile', 'Unknown'],
   datasets: [
     {
-      label: '',
-      backgroundColor: '#f87979',
+      backgroundColor: ['#f87979', '#000', '#2a52be'],
       data: [
         data.filter((squirrel) => squirrel.age == 'Adult').length,
         data.filter((squirrel) => squirrel.age == 'Juvenile').length,
@@ -34,7 +25,6 @@ let dataActions = {
   labels: ['Chasing', 'Climbing', 'Eating', 'Foraging'],
   datasets: [
     {
-      label: '',
       backgroundColor: ['#f87979', '#000', '#2a52be', '#4cf313'],
       data: [
         data.filter((squirrel) => squirrel.chasing == true).length,
@@ -49,8 +39,9 @@ let age = true
 </script>
 
 <template>
-  <Bar v-if="age==true" id="my-chart-id" :data="dataAges" />
-  <Bar v-else id="my-chart-id" :data="dataActions" />
+  <Pie v-if="age==true" id="my-chart-id" :data="dataAges" />
+  <Pie v-else id="my-chart-id" :data="dataActions" />
+  <!-- <Pie id="my-chart-id" :data="chartData" /> -->
 </template>
 
 <style></style>
