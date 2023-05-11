@@ -1,14 +1,27 @@
 <script setup>
-import BarGraph from '../components/BarGraph.vue'
-import { data } from '../api.js'
-import PieChart from '../components/PieChart.vue'
-import { createAssignmentExpression } from '@vue/compiler-core';
-console.log(data)
+import BarGraph from "../components/BarGraph.vue";
+import { data } from "../api.js";
+import PieChart from "../components/PieChart.vue";
+import Button from "../components/Button.vue";
+import { createAssignmentExpression } from "@vue/compiler-core";
+import { ref, nextTick } from "vue";
 
-let stateAge = true
-let stateActions = false
-function ages () {
-
+let stateAge = ref(true);
+function ages() {
+  stateAge.value = true;
+  console.log(stateAge.value);
+  force();
+}
+function action() {
+  stateAge.value = false;
+  console.log(stateAge.value);
+  force();
+}
+let render = ref(true);
+async function force() {
+  render.value = false;
+  await nextTick();
+  render.value = true;
 }
 </script>
 
@@ -16,10 +29,10 @@ function ages () {
   <div>
     <h1>Squirrel</h1>
     <div>
-      <button>ages</button>
-      <button>actions</button>
+      <Button @_clicked="ages">age</Button>
+      <Button @_clicked="action">act</Button>
     </div>
-    <BarGraph />
-    <PieChart />
+    <BarGraph :age="stateAge" v-if="render" />
+    <PieChart :age="stateAge" v-if="render" />
   </div>
 </template>
