@@ -1,27 +1,26 @@
 <script setup>
-import BarGraph from "../components/BarGraph.vue";
-import { data } from "../api.js";
-import PieChart from "../components/PieChart.vue";
-import Button from "../components/Button.vue";
-import { createAssignmentExpression } from "@vue/compiler-core";
-import { ref, nextTick } from "vue";
+import BarGraph from '../components/BarGraph.vue'
+import PieChart from '../components/PieChart.vue'
+import Button from '../components/Button.vue'
+import { createAssignmentExpression } from '@vue/compiler-core'
+import { ref, nextTick } from 'vue'
 
-let stateAge = ref(true);
+let stateAge = ref(true)
 function ages() {
-  stateAge.value = true;
-  console.log(stateAge.value);
-  force();
+  stateAge.value = true
+  console.log(stateAge.value)
+  force()
 }
 function action() {
-  stateAge.value = false;
-  console.log(stateAge.value);
-  force();
+  stateAge.value = false
+  console.log(stateAge.value)
+  force()
 }
-let render = ref(true);
+let render = ref(true)
 async function force() {
-  render.value = false;
-  await nextTick();
-  render.value = true;
+  render.value = false
+  await nextTick()
+  render.value = true
 }
 </script>
 
