@@ -26,10 +26,10 @@ async function force() {
 
 <template>
   <div>
-    <h1>Squirrel</h1>
+    <h1>Squirrel Data</h1>
     <div>
-      <Button @_clicked="ages">age</Button>
-      <Button @_clicked="action">act</Button>
+      <Button @_clicked="ages">Squirrel Ages</Button>
+      <Button @_clicked="action">Squirrel Actions</Button>
     </div>
     <BarGraph :age="stateAge" v-if="render" />
     <PieChart :age="stateAge" v-if="render" />

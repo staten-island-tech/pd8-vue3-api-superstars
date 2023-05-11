@@ -5,7 +5,4 @@
 </template>
 
 <style scoped>
-button {
-  width: 500px;
-}
 </style>
