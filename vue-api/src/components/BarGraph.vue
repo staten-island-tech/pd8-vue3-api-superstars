@@ -31,12 +31,21 @@ let dataAges = {
   ]
 }
 let dataActions = {
+<<<<<<< Updated upstream
   labels: ['Chasing', 'Climbing', 'Eating', 'Foraging'],
   datasets: [
     {
       label: '',
       backgroundColor: ['#f87979', '#000', '#2a52be', '#4cf313'],
+=======
+  labels: ["Running", "Chasing", "Climbing", "Eating", "Foraging"],
+  datasets: [
+    {
+      label: "",
+      backgroundColor: ["#f87979", "#000", "#2a52be", "#4cf313", "#00ffff"],
+>>>>>>> Stashed changes
       data: [
+        data.filter((squirrel) => squirrel.running == true).length,
         data.filter((squirrel) => squirrel.chasing == true).length,
         data.filter((squirrel) => squirrel.climbing == true).length,
         data.filter((squirrel) => squirrel.eating == true).length,
